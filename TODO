@@ -1,0 +1,7 @@
+Add an identifier to the Robot class to store the robot number
+Create a RobotManager class to keep track of all the robots placed on the table and maintain the active robot.
+Update the PlaceCommand to add the robot to the RobotManager and assign it a number.
+Update the CommandParser to handle the new ROBOT command, which sets the active robot in the RobotManager.
+Update the other commands (e.g. MoveCommand, LeftCommand, RightCommand, ReportCommand) to operate only on the active robot in the RobotManager.
+Update the ReportCommand to include information on the number of robots and the active robot.
+Update the tests to cover the new functionality for multiple robots.
