@@ -1,9 +1,14 @@
 package com.venkat.robot;
 
 public class RightCommand implements Command {
+  private RobotManager mgr;
 
+  public RightCommand(RobotManager mgr) {
+    this.mgr = mgr;
+  }
     @Override
-    public void execute(Robot r) {
+    public void execute() {
+      Robot r = this.mgr.getActiveRobot();
       if (r.getDirection() == null) {
         return;
       }

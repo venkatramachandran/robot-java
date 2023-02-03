@@ -14,13 +14,26 @@ public class Main {
             System.exit(-1);
         }
         String file = args[0];
-        Table table = new Table(BOARD_X_SIZE, BOARD_Y_SIZE);
-        Robot robot = new Robot(table);
-        CommandParser cmdParser = new CommandParser();
+        int tableX = -1;
+        int tableY = -1;
+        try {
+            tableX = Integer.parseInt(System.getProperty("BOARD_X_SIZE"));
+        } catch (NumberFormatException nfe) {
+            tableX = BOARD_X_SIZE;
+        }
+        try {
+            tableY = Integer.parseInt(System.getProperty("BOARD_Y_SIZE"));
+        } catch (NumberFormatException nfe) {
+            tableY = BOARD_Y_SIZE;
+        }
+        Table table = new Table(tableX, tableY);
+        RobotManager mgr = new RobotManager(table);
+
+        CommandParser cmdParser = new CommandParser(mgr);
         String line = "";
         try (Scanner scanner = new Scanner(new File(file))){
             while (scanner.hasNextLine()) {
-                cmdParser.parse(scanner.nextLine()).execute(robot);
+                cmdParser.parse(scanner.nextLine()).execute();
             }
         } catch(FileNotFoundException fnfe) {
             System.err.println(fnfe.getMessage());

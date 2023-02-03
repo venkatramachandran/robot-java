@@ -1,8 +1,14 @@
 package com.venkat.robot;
 
 public class MoveCommand implements Command {
+  private RobotManager mgr;
+
+  public MoveCommand(RobotManager mgr) {
+    this.mgr = mgr;
+  }
     @Override
-    public void execute(Robot r) {
+    public void execute() {
+      Robot r = this.mgr.getActiveRobot();
       if (r.getDirection() == null) {
         return;
       }
@@ -22,7 +28,10 @@ public class MoveCommand implements Command {
           newX--;
           break;
       }
-      r.setPosition(new Position(newX, newY));
+      Position pos = new Position(newX, newY);
+      if (mgr.getTable().isValidPosition(pos)) {
+        r.setPosition(pos);
+      }
     }
   }
   

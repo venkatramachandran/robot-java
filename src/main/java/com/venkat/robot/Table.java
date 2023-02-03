@@ -1,9 +1,9 @@
 package com.venkat.robot;
 
 public class Table {
-    private final int width;
-    private final int height;
-  
+    private int width;
+    private int height;
+
     public Table(int width, int height) {
       this.width = width;
       this.height = height;

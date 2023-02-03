@@ -1,15 +1,27 @@
 package com.venkat.robot;
 
 import org.junit.Test;
+import org.junit.BeforeClass;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CommandParserTest {
 
+    private static RobotManager mgr;
+    private static CommandParser parser;
+
+    @BeforeClass
+    public static void beforeClass() {
+        Table table = new Table(5,5);
+        Robot robot = new Robot();
+        mgr = new RobotManager(table);
+        mgr.addRobot(robot);
+        parser = new CommandParser(mgr);
+    }
+
     @Test
     public void parsePlaceCommand() {
-        CommandParser parser = new CommandParser();
         Command command = parser.parse("PLACE 1,2,NORTH");
 
         assertTrue(command instanceof PlaceCommand);
@@ -21,7 +33,6 @@ public class CommandParserTest {
 
     @Test
     public void parseMoveCommand() {
-        CommandParser parser = new CommandParser();
         Command command = parser.parse("MOVE");
 
         assertTrue(command instanceof MoveCommand);
@@ -29,7 +40,6 @@ public class CommandParserTest {
 
     @Test
     public void parseLeftCommand() {
-        CommandParser parser = new CommandParser();
         Command command = parser.parse("LEFT");
 
         assertTrue(command instanceof LeftCommand);
@@ -37,7 +47,6 @@ public class CommandParserTest {
 
     @Test
     public void parseRightCommand() {
-        CommandParser parser = new CommandParser();
         Command command = parser.parse("RIGHT");
 
         assertTrue(command instanceof RightCommand);
@@ -45,7 +54,6 @@ public class CommandParserTest {
 
     @Test
     public void parseReportCommand() {
-        CommandParser parser = new CommandParser();
         Command command = parser.parse("REPORT");
 
         assertTrue(command instanceof ReportCommand);

@@ -46,6 +46,16 @@
         <version>1.6.0</version>
         <configuration>
           <mainClass>com.venkat.robot.Main</mainClass>
+          <systemProperties>
+            <property>
+              <key>BOARD_X_SIZE</key>
+              <value>5</value>
+            </property>
+            <property>
+              <key>BOARD_Y_SIZE</key>
+              <value>5</value>
+            </property>
+          </systemProperties>
           <arguments>
             <argument>src/test/resources/example.txt</argument>
           </arguments>

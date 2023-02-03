@@ -5,10 +5,13 @@ import java.util.Arrays;
 public class Robot {
   private Position position;
   private Direction direction;
-  private Table table;
 
-  public Robot(Table table) {
-    this.table = table;
+  public Robot(Position position, Direction direction) {
+    this.position = position;
+    this.direction = direction;
+  }
+
+  public Robot() {
   }
 
   public Position getPosition() {
@@ -16,17 +19,7 @@ public class Robot {
   }
 
   public void setPosition(Position position) {
-    if (table.isValidPosition(position)) {
-      this.position = position;
-    }
-  }
-
-  public Table getTable() {
-    return this.table;
-  }
-
-  public void setTable(Table table) {
-    this.table = table;
+    this.position = position;
   }
 
   public Direction getDirection() {
